@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+   - "7"
+branches:
+   only:
+      - master
+
+before_script:
+   - npm install -g @angular/cli
+
+script:
+   - ng build --prod
+
+before_deploy:
+    - cd dist
+deploy:
+    provider: azure_web_apps
+    skip_cleanup: true
+    verbose: true
