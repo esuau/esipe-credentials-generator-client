@@ -1,5 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 import { EmailComponent } from './email.component';
 
 describe('EmailComponent', () => {
@@ -8,7 +12,12 @@ describe('EmailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmailComponent ]
+      declarations: [ EmailComponent ],
+      imports: [
+        FlexLayoutModule,
+        MatButtonModule,
+        MatCardModule
+      ]
     })
     .compileComponents();
   }));
