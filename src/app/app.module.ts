@@ -3,17 +3,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+import { AppRoutingModule } from './app.routing';
+
 import { AppComponent } from './app.component';
+import { EmailComponent } from './components/email/email.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmailComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
