@@ -10,11 +10,13 @@ import { AppRoutingModule } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { EmailComponent } from './components/email/email.component';
+import { PasswordComponent } from './components/password/password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmailComponent
+    EmailComponent,
+    PasswordComponent
   ],
   imports: [
     AppRoutingModule,
