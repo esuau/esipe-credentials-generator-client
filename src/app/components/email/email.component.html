@@ -25,6 +25,6 @@
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex></div>
-    <button mat-raised-button color="primary">CONTINUE</button>
+    <button mat-raised-button color="primary" [disabled]="!emailFormControl.valid" [routerLink]="'password'">CONTINUE</button>
   </mat-card-actions>
 </mat-card>
