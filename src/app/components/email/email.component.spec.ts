@@ -57,4 +57,23 @@ describe('EmailComponent', () => {
     component.emailFormControl.setValue('email@domain.com');
     expect(component.emailFormControl.valid).toEqual(false);
   });
+
+  it('should display a `CONTINUE` button', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').textContent).toContain('CONTINUE');
+  });
+
+  it('should disable `CONTINUE` button when email is invalid', () => {
+    component.emailFormControl.setValue('email@domain.com');
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').disabled).toBe(true);
+  });
+
+  it('should enable `CONTINUE` button when email is valid', () => {
+    component.emailFormControl.setValue('email@u-pec.fr');
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').disabled).toBe(false);
+  });
 });
