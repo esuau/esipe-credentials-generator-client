@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -29,6 +30,7 @@ import { PasswordComponent } from './components/password/password.component';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule
   ],
   providers: [],

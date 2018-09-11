@@ -25,6 +25,16 @@ export class EmailComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
+  levelFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  levels = [
+    { text: 'ING 1', value: 'I1' },
+    { text: 'ING 2', value: 'I2' },
+    { text: 'ING 3', value: 'I3' }
+  ];
+
   constructor() { }
 
   ngOnInit() {

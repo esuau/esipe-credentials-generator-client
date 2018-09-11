@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -6,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from '../../app.routing';
 
@@ -30,6 +32,7 @@ describe('EmailComponent', () => {
         MatButtonModule,
         MatCardModule,
         MatInputModule,
+        MatSelectModule,
         ReactiveFormsModule
       ]
     })
@@ -44,6 +47,11 @@ describe('EmailComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display an `Email` input', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('input').getAttribute('placeholder')).toEqual('Email');
   });
 
   it('should have email field valid with UPEC address', () => {
@@ -75,5 +83,17 @@ describe('EmailComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button').disabled).toBe(false);
+  });
+
+  it('should display a select input for level', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-select').getAttribute('placeholder')).toEqual('Level');
+  });
+
+  it('should have the level input required', () => {
+    component.levelFormControl.setValue(null);
+    expect(component.levelFormControl.valid).toBe(false);
+    component.levelFormControl.setValue({ text: 'ING1', value: 'I1' });
+    expect(component.levelFormControl.valid).toBe(true);
   });
 });
