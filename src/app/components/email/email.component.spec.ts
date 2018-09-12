@@ -55,34 +55,22 @@ describe('EmailComponent', () => {
   });
 
   it('should have email field valid with UPEC address', () => {
-    component.emailFormControl.setValue('email@u-pec.fr');
-    expect(component.emailFormControl.valid).toEqual(true);
-    component.emailFormControl.setValue('email@etu.u-pec.fr');
-    expect(component.emailFormControl.valid).toEqual(true);
+    component.infoForm.get('email').setValue('email@u-pec.fr');
+    expect(component.infoForm.get('email').valid).toEqual(true);
+    component.infoForm.get('email').setValue('email@etu.u-pec.fr');
+    expect(component.infoForm.get('email').valid).toEqual(true);
   });
 
   it('should have email field invalid with non-UPEC address', () => {
-    component.emailFormControl.setValue('email@domain.com');
-    expect(component.emailFormControl.valid).toEqual(false);
-  });
-
-  it('should display a `CONTINUE` button', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('button').textContent).toContain('CONTINUE');
+    component.infoForm.get('email').setValue('email@domain.com');
+    expect(component.infoForm.get('email').valid).toEqual(false);
   });
 
   it('should disable `CONTINUE` button when email is invalid', () => {
-    component.emailFormControl.setValue('email@domain.com');
+    component.infoForm.get('email').setValue('email@domain.com');
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button').disabled).toBe(true);
-  });
-
-  it('should enable `CONTINUE` button when email is valid', () => {
-    component.emailFormControl.setValue('email@u-pec.fr');
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('button').disabled).toBe(false);
   });
 
   it('should display a select input for level', () => {
@@ -91,9 +79,53 @@ describe('EmailComponent', () => {
   });
 
   it('should have the level input required', () => {
-    component.levelFormControl.setValue(null);
-    expect(component.levelFormControl.valid).toBe(false);
-    component.levelFormControl.setValue({ text: 'ING1', value: 'I1' });
-    expect(component.levelFormControl.valid).toBe(true);
+    component.infoForm.get('level').setValue(null);
+    expect(component.infoForm.get('level').valid).toBe(false);
+    component.infoForm.get('level').setValue({ text: 'ING1', value: 'I1' });
+    expect(component.infoForm.get('level').valid).toBe(true);
+  });
+
+  it('should disable `CONTINUE` button when level is not selected', () => {
+    component.infoForm.get('level').setValue(null);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').disabled).toBe(true);
+  });
+
+  it('should have invalid FormGroup when email value is incorrect', () => {
+    component.infoForm.setValue({
+      email: 'email@domain.com',
+      level: { text: 'ING1', value: 'I1' }
+    });
+    fixture.detectChanges();
+    expect(component.infoForm.valid).toBe(false);
+  });
+
+  it('should have invalid FormGroup when level value is null', () => {
+    component.infoForm.setValue({
+      email: 'email@u-pec.fr',
+      level: null
+    });
+    fixture.detectChanges();
+    expect(component.infoForm.valid).toBe(false);
+  });
+
+  it('should have valid form when inputs are correct', () => {
+    component.infoForm.setValue({
+      email: 'email@u-pec.fr',
+      level: { text: 'ING1', value: 'I1' }
+    });
+    fixture.detectChanges();
+    expect(component.infoForm.valid).toBe(true);
+  });
+
+  it('should enable `CONTINUE` button when form is valid', () => {
+    component.infoForm.setValue({
+      email: 'email@u-pec.fr',
+      level: { text: 'ING1', value: 'I1' }
+    });
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').disabled).toBe(true);
   });
 });

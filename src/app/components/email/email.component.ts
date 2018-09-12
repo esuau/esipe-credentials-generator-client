@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -17,17 +17,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class EmailComponent implements OnInit {
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-    Validators.pattern('^[a-z0-9!#$%&*+\/=?^_`{|}~.-]+@(etu.)?u-pec.fr')
-  ]);
+  infoForm = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('^[a-z0-9!#$%&*+\/=?^_`{|}~.-]+@(etu.)?u-pec.fr')
+    ]),
+    level: new FormControl('', [
+      Validators.required
+    ])
+  });
 
   matcher = new MyErrorStateMatcher();
-
-  levelFormControl = new FormControl('', [
-    Validators.required
-  ]);
 
   levels = [
     { text: 'ING 1', value: 'I1' },
