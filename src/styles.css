@@ -2,3 +2,8 @@ body, html {
   height: 100%;
   margin: 0;
 }
+
+.main-card {
+  max-height: 900px;
+  width: 300px;
+}

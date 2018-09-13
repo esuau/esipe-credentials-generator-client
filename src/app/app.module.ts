@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
 
+import { UserService } from './services/user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,7 @@ import { PasswordComponent } from './components/password/password.component';
     MatSelectModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
