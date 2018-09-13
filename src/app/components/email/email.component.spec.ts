@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -130,12 +131,27 @@ describe('EmailComponent', () => {
     expect(compiled.querySelector('button').disabled).toBe(false);
   });
 
-  it('should navigate to password when button `CONTINUE` is clicked', () => {
+  it('should prevent navigation to PasswordComponent when button `CONTINUE` while form data is incorrect', () => {
+    component.infoForm.setValue({
+      email: null,
+      level: {}
+    });
+    fixture.detectChanges();
     spyOn(component, 'navigateToPassword');
     const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
-    fixture.whenStable().then(() => {
-      expect(component.navigateToPassword).toHaveBeenCalled();
+    expect(component.navigateToPassword).not.toHaveBeenCalled();
+  });
+
+  it('should navigate to PasswordComponent when button `CONTINUE` is clicked', () => {
+    component.infoForm.setValue({
+      email: 'email@u-pec.fr',
+      level: { text: 'ING1', value: 'I1' }
     });
+    fixture.detectChanges();
+    spyOn(component, 'navigateToPassword');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    expect(component.navigateToPassword).toHaveBeenCalled();
   });
 });
