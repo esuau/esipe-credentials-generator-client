@@ -68,4 +68,13 @@ describe('PasswordComponent', () => {
     };
     expect(component.username.substring(0, 3)).toEqual('I1-');
   });
+
+  it('should get password with 8 characters', () => {
+    service = TestBed.get(UserService);
+    service.user = {
+      email: 'email@u-pec.fr',
+      level: 'I1'
+    };
+    expect(component.password.length).toEqual(8);
+  });
 });
