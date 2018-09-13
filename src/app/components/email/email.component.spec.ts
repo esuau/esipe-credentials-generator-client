@@ -9,9 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from '../../app.routing';
-
 import { EmailComponent } from './email.component';
 import { PasswordComponent } from '../password/password.component';
+
+import { UserService } from '../../services/user.service';
 
 describe('EmailComponent', () => {
   let component: EmailComponent;
@@ -33,7 +34,8 @@ describe('EmailComponent', () => {
         MatInputModule,
         MatSelectModule,
         ReactiveFormsModule
-      ]
+      ],
+      providers: [ UserService ]
     })
     .compileComponents();
   }));
@@ -126,5 +128,14 @@ describe('EmailComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button').disabled).toBe(false);
+  });
+
+  it('should navigate to password when button `CONTINUE` is clicked', () => {
+    spyOn(component, 'navigateToPassword');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    fixture.whenStable().then(() => {
+      expect(component.navigateToPassword).toHaveBeenCalled();
+    });
   });
 });

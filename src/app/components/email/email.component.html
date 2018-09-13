@@ -34,6 +34,6 @@
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex></div>
-    <button mat-raised-button color="primary" [disabled]="!infoForm.valid" [routerLink]="'password'">CONTINUE</button>
+    <button mat-raised-button color="primary" [disabled]="!infoForm.valid" (click)="navigateToPassword()">CONTINUE</button>
   </mat-card-actions>
 </mat-card>

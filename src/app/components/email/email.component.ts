@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { UserService } from '../../services/user.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -36,9 +38,14 @@ export class EmailComponent implements OnInit {
     { text: 'ING 3', value: 'I3' }
   ];
 
-  constructor() { }
+  constructor( private _service: UserService, private _router: Router ) { }
 
   ngOnInit() {
+  }
+
+  navigateToPassword(): void {
+    this._service.user = this.infoForm.value;
+    this._router.navigate([ 'password' ]);
   }
 
 }
