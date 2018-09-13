@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -30,6 +32,8 @@ describe('PasswordComponent', () => {
         FlexLayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
         MatInputModule,
         MatSelectModule,
         ReactiveFormsModule
@@ -54,5 +58,14 @@ describe('PasswordComponent', () => {
     spyOn(component, 'navigateToRoot');
     service.user = null;
     expect(component.navigateToRoot).toHaveBeenCalled();
+  });
+
+  it('should get username depending on level', () => {
+    service = TestBed.get(UserService);
+    service.user = {
+      email: 'email@u-pec.fr',
+      level: 'I1'
+    };
+    expect(component.username.substring(0, 3)).toEqual('I1-');
   });
 });
