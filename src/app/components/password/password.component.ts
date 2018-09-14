@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class PasswordComponent implements OnInit {
 
   password: string;
 
-  constructor( private _service: UserService, private _router: Router ) { }
+  constructor( private _service: UserService, private _router: Router, public snackBar: MatSnackBar ) { }
 
   ngOnInit() {
     this._service.user.subscribe(userInfo => {
@@ -29,10 +30,18 @@ export class PasswordComponent implements OnInit {
     });
   }
 
-  copyToClipboard(input: any): void {
+  copyToClipboard(input: any, type: string): void {
     input.select();
     document.execCommand('copy');
     input.setSelectionRange(0, 0);
+    let message: string;
+    if ( type === 'username' ) {
+      message = 'Username ';
+    } else {
+      message = 'Password ';
+    }
+    message += 'copied to clipboard!';
+    this.openSnackBar(message);
   }
 
   navigateToRoot(): void {
@@ -55,6 +64,12 @@ export class PasswordComponent implements OnInit {
         pass += chars.charAt(i);
     }
     return pass;
+  }
+
+  private openSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 2000,
+    });
   }
 
 }

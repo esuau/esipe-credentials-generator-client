@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -10,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from '../../app.routing';
 import { EmailComponent } from './email.component';
@@ -38,6 +38,7 @@ describe('EmailComponent', () => {
         MatIconModule,
         MatInputModule,
         MatSelectModule,
+        MatSnackBarModule,
         ReactiveFormsModule
       ],
       providers: [ UserService ]

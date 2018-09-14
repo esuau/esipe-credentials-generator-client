@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material';
 
 import { AppRoutingModule } from '../../app.routing';
 import { EmailComponent } from '../email/email.component';
@@ -19,6 +21,7 @@ describe('PasswordComponent', () => {
   let component: PasswordComponent;
   let fixture: ComponentFixture<PasswordComponent>;
   let service: UserService;
+  let snackbar: MatSnackBar;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,6 +39,7 @@ describe('PasswordComponent', () => {
         MatIconModule,
         MatInputModule,
         MatSelectModule,
+        MatSnackBarModule,
         ReactiveFormsModule
       ],
       providers: [ UserService ]
@@ -92,5 +96,23 @@ describe('PasswordComponent', () => {
     const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(2)');
     field.click();
     expect(component.copyToClipboard).toHaveBeenCalled();
+  });
+
+  it('should show snackbar when username is copied', () => {
+    snackbar = TestBed.get(MatSnackBar);
+    spyOn(snackbar, 'open');
+    component.password = 'abcdefg$';
+    const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(1)');
+    field.click();
+    expect(snackbar.open).toHaveBeenCalled();
+  });
+
+  it('should show snackbar when password is copied', () => {
+    snackbar = TestBed.get(MatSnackBar);
+    spyOn(snackbar, 'open');
+    component.password = 'abcdefg$';
+    const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(2)');
+    field.click();
+    expect(snackbar.open).toHaveBeenCalled();
   });
 });
