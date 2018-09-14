@@ -77,4 +77,20 @@ describe('PasswordComponent', () => {
     };
     expect(component.password.length).toEqual(8);
   });
+
+  it('should copy username to clipboard', () => {
+    spyOn(component, 'copyToClipboard');
+    component.username = 'IX-XX';
+    const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(1)');
+    field.click();
+    expect(component.copyToClipboard).toHaveBeenCalled();
+  });
+
+  it('should copy password to clipboard', () => {
+    spyOn(component, 'copyToClipboard');
+    component.password = 'abcdefg$';
+    const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(2)');
+    field.click();
+    expect(component.copyToClipboard).toHaveBeenCalled();
+  });
 });

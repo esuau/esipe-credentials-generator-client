@@ -29,12 +29,18 @@ export class PasswordComponent implements OnInit {
     });
   }
 
-  private getUsername(): string {
-    return this._user.level + '-' + this.getRandomInt(100, 1);
+  copyToClipboard(input: any): void {
+    input.select();
+    document.execCommand('copy');
+    input.setSelectionRange(0, 0);
   }
 
   navigateToRoot(): void {
     this._router.navigate([ '' ]);
+  }
+
+  private getUsername(): string {
+    return this._user.level + '-' + this.getRandomInt(100, 1);
   }
 
   private getRandomInt(min: number, max: number): number {
