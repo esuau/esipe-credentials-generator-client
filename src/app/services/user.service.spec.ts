@@ -2,18 +2,13 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { UserService } from './user.service';
 
-import { of } from 'rxjs';
-
 describe('UserService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [UserService]
-    });
-  });
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', inject([UserService], (service: UserService) => {
+  it('should be created', () => {
+    const service: UserService = TestBed.get(UserService);
     expect(service).toBeTruthy();
-  }));
+  });
 
   it('should get user information', inject([UserService], (service: UserService, done: any) => {
     const userInfo = {

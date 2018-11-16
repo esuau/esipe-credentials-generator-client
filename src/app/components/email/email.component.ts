@@ -15,7 +15,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
-  styleUrls: ['./email.component.css']
+  styleUrls: ['./email.component.scss']
 })
 export class EmailComponent implements OnInit {
 

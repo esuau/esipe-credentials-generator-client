@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material';
 
-import { AppRoutingModule } from '../../app.routing';
+import { AppRoutingModule } from '../../app-routing.module';
 import { EmailComponent } from '../email/email.component';
 import { PasswordComponent } from './password.component';
 import { UserService } from '../../services/user.service';

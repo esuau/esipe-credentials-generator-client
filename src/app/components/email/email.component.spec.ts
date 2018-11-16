@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { AppRoutingModule } from '../../app.routing';
+import { AppRoutingModule } from '../../app-routing.module';
 import { EmailComponent } from './email.component';
 import { PasswordComponent } from '../password/password.component';
 

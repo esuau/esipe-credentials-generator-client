@@ -12,13 +12,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { EmailComponent } from './components/email/email.component';
 import { PasswordComponent } from './components/password/password.component';
-
-import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +39,7 @@ import { UserService } from './services/user.service';
     MatSnackBarModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
