@@ -1,2 +1,2 @@
 [config]
-project = dist/esipe-credentials-generator-client
+project = dist/esipe-credentials-client
