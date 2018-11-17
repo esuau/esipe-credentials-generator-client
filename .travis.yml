@@ -20,8 +20,11 @@ install:
   - npm install
 
 script:
-  - npm run test -- --no-progress --browsers=ChromeHeadlessCI
+  - npm run test -- --code-coverage --no-progress --browsers=ChromeHeadlessCI
   - npm run build -- --prod
+
+after_success:
+  - npm run codecov
 
 deploy:
   provider: azure_web_apps
