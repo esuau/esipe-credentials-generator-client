@@ -20,7 +20,7 @@ install:
   - npm install
 
 script:
-  - npm run test -- --single-run --no-progress --browser=ChromeHeadlessCI
+  - npm run test -- --no-progress --browsers=ChromeHeadlessCI
   - npm run build -- --prod
 
 deploy:
