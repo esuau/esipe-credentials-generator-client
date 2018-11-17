@@ -1,17 +1,34 @@
+dist: trusty
+sudo: false
+
 language: node_js
 node_js:
   - "8"
-branches:
-  only:
-    - master
 
-before_script:
-  - npm install -g @angular/cli
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  directories:
+     - ./node_modules
+
+install:
+  - npm install
 
 script:
-  - ng build --prod
+  - npm run test -- --code-coverage --no-progress --browsers=ChromeHeadlessCI
+  - npm run build -- --prod
+
+after_success:
+  - npm run codecov
 
 deploy:
   provider: azure_web_apps
   skip_cleanup: true
   verbose: true
+  on:
+    branch: master

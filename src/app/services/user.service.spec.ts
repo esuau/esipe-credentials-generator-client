@@ -10,7 +10,7 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get user information', inject([UserService], (service: UserService, done: any) => {
+  it('should get user information', inject([UserService], (service: UserService) => {
     const userInfo = {
       email: 'email@u-pec.fr',
       level: { text: 'ING1', value: 'I1' }
@@ -18,7 +18,6 @@ describe('UserService', () => {
     service.user = userInfo;
     service.user.subscribe((data) => {
       expect(data).toEqual(userInfo);
-      done();
     });
   }));
 });
