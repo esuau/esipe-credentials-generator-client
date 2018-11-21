@@ -1,4 +1,9 @@
-# EsipeCredentialsClient
+[![Build Status](https://travis-ci.org/esuau/esipe-credentials-client.svg?branch=master)](https://travis-ci.org/esuau/esipe-credentials-client)
+
+
+# ESIPE Credentials Client
+
+A simple web app to get login credentials for [ESIPE-Créteil](http://esipe.u-pec.fr/) virtualized infrastructure.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
