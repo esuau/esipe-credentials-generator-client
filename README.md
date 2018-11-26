@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/esuau/esipe-credentials-client.svg?branch=master)](https://travis-ci.org/esuau/esipe-credentials-client)
+[![codecov](https://codecov.io/gh/esuau/esipe-credentials-client/branch/master/graph/badge.svg)](https://codecov.io/gh/esuau/esipe-credentials-client)
 
 
 # ESIPE Credentials Client
