@@ -1,34 +1,11 @@
-dist: trusty
-sudo: false
-
 language: node_js
-node_js:
-  - "8"
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-
-cache:
-  directories:
-     - ./node_modules
-
-install:
-  - npm install
+services:
+  - docker
 
 script:
-  - npm run test -- --code-coverage --no-progress --browsers=ChromeHeadlessCI
-  - npm run build -- --prod
-
-after_success:
-  - npm run codecov
+  - docker build --build-arg CODECOV_TOKEN=$COVERAGE_TOKEN -t $DOCKER_USERNAME/esipe-credentials-client .
 
 deploy:
-  provider: azure_web_apps
-  skip_cleanup: true
-  verbose: true
-  on:
-    branch: master
+  provider: script
+  script: bash scripts/docker_push.sh
