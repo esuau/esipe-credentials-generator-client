@@ -8,7 +8,7 @@ then
 
     npm version patch -m "Release version %s"
 
-    git push origin master
+    git push origin master --tags
     
     VERSION=$(grep 'version' package.json | cut -d '"' -f4)
 else 
