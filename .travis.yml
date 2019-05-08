@@ -1,16 +1,11 @@
-language: generic
+language: node_js
+node_js:	
+  - "8"
 
 services:
   - docker
 
-addons:
-  apt:
-    update: true
-
-install:
-  - sudo apt-get install -y npm
-  on:
-    branch: master
+install: true
 
 script:
   - docker build --build-arg CODECOV_TOKEN=$COVERAGE_TOKEN -t $DOCKER_USERNAME/esipe-credentials-client .
