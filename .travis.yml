@@ -3,6 +3,15 @@ language: generic
 services:
   - docker
 
+addons:
+  apt:
+    update: true
+
+install:
+  - sudo apt-get install -y npm
+  on:
+    branch: master
+
 script:
   - docker build --build-arg CODECOV_TOKEN=$COVERAGE_TOKEN -t $DOCKER_USERNAME/esipe-credentials-client .
 
