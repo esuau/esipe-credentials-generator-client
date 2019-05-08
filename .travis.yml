@@ -8,8 +8,8 @@ services:
 install: true
 
 script:
-  - docker build --build-arg CODECOV_TOKEN=$COVERAGE_TOKEN -t $DOCKER_USERNAME/esipe-credentials-client .
+  - docker build --build-arg CODECOV_TOKEN=$COVERAGE_TOKEN -t esipe-credentials-client .
 
 deploy:
   provider: script
-  script: bash scripts/docker_push.sh
+  script: bash scripts/deploy.sh
