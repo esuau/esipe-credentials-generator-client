@@ -2,12 +2,13 @@
 
 if [[ $TRAVIS_BRANCH == "master" ]]
 then
-    npm version patch -m "Release version %s"
-
     git config --global user.email "evan.suau@etu.u-pec.fr"
     git config --global user.name "esuau"
-    git remote add upstream https://${GH_TOKEN}@github.com/esuau/esipe-credentials-client
-    git push upstream master
+    git remote set-url origin https://${GH_TOKEN}@github.com/esuau/esipe-credentials-client
+
+    npm version patch -m "Release version %s"
+
+    git push origin master
     
     VERSION=$(grep 'version' package.json | cut -d '"' -f4)
 else 
