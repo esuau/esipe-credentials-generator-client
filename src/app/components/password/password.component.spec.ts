@@ -87,7 +87,7 @@ describe('PasswordComponent', () => {
     component.username = 'IX-XX';
     const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(1)');
     field.click();
-    expect(component.copyToClipboard).toHaveBeenCalled();
+    expect(component.copyToClipboard).toHaveBeenCalledWith('username');
   });
 
   it('should copy password to clipboard', () => {
@@ -95,7 +95,7 @@ describe('PasswordComponent', () => {
     component.password = 'abcdefg$';
     const field = fixture.debugElement.nativeElement.querySelector('mat-form-field:nth-child(2)');
     field.click();
-    expect(component.copyToClipboard).toHaveBeenCalled();
+    expect(component.copyToClipboard).toHaveBeenCalledWith('password');
   });
 
   it('should show snackbar when username is copied', () => {

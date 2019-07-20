@@ -30,10 +30,19 @@ export class PasswordComponent implements OnInit {
     });
   }
 
-  copyToClipboard(input: any, type: string): void {
-    input.select();
+  copyToClipboard(type: string) {
+    let selectionBox = document.createElement('textarea');
+    selectionBox.style.position = 'fixed';
+    selectionBox.style.left = '0';
+    selectionBox.style.top = '0';
+    selectionBox.style.opacity = '0';
+    selectionBox.value = type === 'password' ? this.password : this.username;
+    document.body.appendChild(selectionBox);
+    selectionBox.focus();
+    selectionBox.select();
     document.execCommand('copy');
-    input.setSelectionRange(0, 0);
+    document.body.removeChild(selectionBox);
+
     let message: string;
     if ( type === 'username' ) {
       message = 'Username ';
